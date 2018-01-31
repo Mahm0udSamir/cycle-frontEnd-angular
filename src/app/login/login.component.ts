@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginServerService } from './loginServer.service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
  
   onSubmit() {
-    const userData = {_token:'' ,email: this.email.value, password: this.password.value, login: 'login'};
+    const userData: User = new User(this.email.value, this.password.value);
     this.loginServerService.loginService(userData)
       .subscribe(
         data => {
