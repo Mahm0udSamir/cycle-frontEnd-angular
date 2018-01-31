@@ -1,0 +1,72 @@
+<div class="blure-form col-xs-12">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-1 col-md-offset-2 form-border">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <h2>         
+          Login</h2>
+        <div 
+          class="input-group"
+          [ngClass]="{'error': !email.valid && email.touched}"
+        >
+          <span 
+           [ngClass]="{'errorIcon': !email.valid && email.touched}"          
+            class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input 
+            id="email" 
+            type="text" 
+            class="form-control" 
+            name="email" 
+            placeholder="Email"
+            ngModel
+            email
+            required
+            #email="ngModel"
+            >
+          </div>
+          <!-- <ul 
+            class="help-block"
+            *ngIf="!email.valid && email.touched"
+            >
+              <li
+                *ngIf="email.value ===''; else notValid"
+              > Require</li> 
+              <li  
+                #notValid
+              >Email not valid!</li>
+          </ul> -->
+
+          <div 
+            class="input-group"
+            [ngClass]="{'error': !password.valid && password.touched}"
+          >
+          <span 
+            [ngClass]="{'errorIcon': !password.valid && password.touched}"
+            class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input 
+            id="password" 
+            type="password" 
+            class="form-control" 
+            name="password" 
+            placeholder="Password"
+            ngModel
+            required
+            #password="ngModel"
+            >
+          </div>
+          <!-- <ul
+            class="help-block"
+            *ngIf="!password.valid && password.touched"
+          >
+            <li >Password is require</li>
+          </ul> -->
+        <button 
+          class="btn form-control" 
+          type="submit"
+          [disabled]="!f.valid"
+          >Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

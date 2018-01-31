@@ -1,0 +1,77 @@
+img{
+    width: 100%;
+    height: 684px;
+}
+
+
+@media (min-width: 768px){
+    #carousel-example-generic{
+        /* width: 111.923%;
+        margin-left: -70px;*/
+        margin-top: -19px; 
+        padding: 0;
+    }
+    .carousel-indicators{
+        left: 109%;
+        width: 10%
+    }
+    /* .carousel-caption {
+        right: 53%;
+        left: 6%;
+        margin-bottom: 22%;
+        height: 768px;
+        background: rgba(255, 106, 74, 0.72);
+        width: 500px;
+        position: absolute;
+        z-index: 1;
+    } */
+
+     .carousel-inner>.item>img{
+         height: 768px;
+     }
+     .blure{
+        height: 768px;
+        left: 50px;
+        background:rgba(255, 106, 74, 0.87);
+        position: absolute;
+        z-index: 1;
+        color: #fffefe;
+        padding-top: 207px;
+        padding-left: 39px;
+        padding-right: 34px;
+     }
+     .blure .btn{
+        margin-left: 38%;    
+        padding: 15px;
+        font-size: 18px;
+        color:rgba(255, 104, 74, 0.986);    
+        background-color: #FFF;
+    }
+    
+    .blure .btn:hover{
+        background:rgba(245, 245, 245, 0.28);  
+        color: #FFF;
+        border: 1px solid #FFF
+        
+        
+     }
+     /* .blure span{
+         font-size: 36px
+     } */
+
+
+     
+    
+}
+
+/* 
+@media (min-width: 576px) { ... }
+
+/* Medium devices (tablets, 768px and up) 
+@media (min-width: 768px) { ... }
+
+/* Large devices (desktops, 992px and up) 
+@media (min-width: 992px) { ... }
+
+/* Extra large devices (large desktops, 1200px and up) 
+@media (min-width: 1200px) { } */
