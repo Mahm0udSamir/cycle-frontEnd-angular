@@ -1,0 +1,36 @@
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #fffffff7;
+    background-color: #f38075;
+}
+.navbar-default {
+    background-color: #ffffff;
+    border: 0;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #f38075;
+    font-weight: bold;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #fffffff7;
+    background-color: #f38075;
+}
+.btn-default {
+    color: #f38075;
+    background-color: #fff;
+    border-color: #f38075;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 9px -1px #f38075;
+}
+.btn-default:hover{
+    background: #f38075;
+    color: #FFF
+}
+/* 
+.container-fluid{
+    position: fixed;
+    left: 71px;
+    z-index: 2;
+    background: linear-gradient(#0000009e, #ffffff42);
+} */

@@ -1,0 +1,92 @@
+<img src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+  <div class="table-container col-md-10 col-md-offset-1">
+
+      <div class="input-group col-md-offset-4 col-md-4 search">
+        <input 
+        type="text" 
+        class="form-control" 
+        name="search" 
+        placeholder="Search"
+        [(ngModel)]="search"
+        >
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    <table class="table table-fixed" >
+        <thead>
+          <tr>
+            <th class="col-xs-1"></th>
+            <th class="col-xs-1">ID</th>
+            <th class="col-xs-2">Name</th>
+            <th class="col-xs-2">Email</th>
+            <th class="col-xs-2">Created at</th>
+            <th class="col-xs-2">Updated at</th>
+            <th class="col-xs-1">Balance</th>
+            <th class="col-xs-1">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+            <!-- <tr>
+                <td class="col-xs-1"><img class="user-img" src="https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/10314501_362276733948997_7521527313236426870_n.jpg?oh=e77f84f2bbb03b8a91a1df4948a615b9&oe=5B11F5A9"
+                  alt="user.img"></td>
+                <td class="col-xs-1">{{users[0].id}}</td>
+                <td class="col-xs-2">{{users[0].name}}</td>
+                <td class="col-xs-2">{{users[0].email}}</td>
+                <td class="col-xs-2">{{users[0].created_at === null? '2018-02-10 05:53:30': users[0].created_at}}</td>
+                <td class="col-xs-2">{{users[0].updated_at === null? '2018-02-10 05:53:30': users[0].updated_at}}</td>
+                <td class="col-xs-1">{{users[0].balance}}</td>
+                <td class="col-xs-1">
+                    <button 
+                     class="btn btn-primary" title="remove">
+                        <span class="glyphicon glyphicon-remove"></span>     
+                    </button>
+                </td>
+              </tr> -->
+          <tr *ngFor="let user of users | nameFilter:search" >
+            <td class="col-xs-1"><img class="user-img" src="https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/10314501_362276733948997_7521527313236426870_n.jpg?oh=e77f84f2bbb03b8a91a1df4948a615b9&oe=5B11F5A9"
+              alt="user.img"></td>
+            <td class="col-xs-1">{{user.id}}</td>
+            <td class="col-xs-2">{{user.name}}</td>
+            <td class="col-xs-2">{{user.email}}</td>
+            <td class="col-xs-2">{{user.created_at === null? '2018-02-10 05:53:30': user.created_at}}</td>
+            <td class="col-xs-2">{{user.updated_at === null? '2018-02-10 05:53:30': user.updated_at}}</td>
+            <td class="col-xs-1">{{user.balance}}</td>
+            <td class="col-xs-1">
+                <button
+                 data-toggle="modal" [attr.data-target]="'#' + user.id"
+                 class="btn btn-primary" title="remove">
+                    <span class="glyphicon glyphicon-remove"></span>     
+                </button>
+
+               <!-- Modal -->
+                <div class="modal fade" [attr.id]="user.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete 
+                          <strong>{{user.name}}</strong> with id: <strong>{{user.id}}</strong> ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button 
+                            (click)="onDelete(user.id)"
+                            data-dismiss="modal"
+                            type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </td>
+            
+           
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<router-outlet></router-outlet>

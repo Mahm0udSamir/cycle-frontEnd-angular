@@ -1,0 +1,79 @@
+<img src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+  <div class="table-container col-md-8 col-md-offset-2">
+    <a 
+      routerLink="/admin/bikes/new"
+      class="add btn btn-primary">Add Bike</a>
+    
+      <div class="input-group col-md-offset-5 col-md-4 search">
+        <input 
+        type="text" 
+        class="form-control" 
+        name="search" 
+        placeholder="Search"
+        [(ngModel)]="search"
+        
+        >
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    <table class="table table-fixed" >
+        <thead>
+          <tr>
+            <th class="col-xs-1">ID</th>
+            <th class="col-xs-2">Name</th>
+            <th class="col-xs-1">Booked</th>
+            <th class="col-xs-3">Created at</th>
+            <th class="col-xs-3">Updated at</th>
+            <th class="col-xs-2">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let bike of bikes | nameFilter:search" >
+            <td class="col-xs-1">{{bike.id}}</td>
+            <td class="col-xs-2">{{bike.name}}</td>
+            <td class="col-xs-1">{{bike.is_locked === '0'?false : true}}</td>
+            <td class="col-xs-3">{{bike.created_at}}</td>
+            <td class="col-xs-3">{{bike.updated_at}}</td>
+            <td class="col-xs-2">
+              <button 
+              data-toggle="modal" [attr.data-target]="'#' + bike.id"              
+            
+              class="btn btn-primary" title="remove" data-toggle="modal" data-target="#myModal">
+                  <span class="glyphicon glyphicon-remove"></span>     
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" [attr.id]="bike.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to delete 
+                        <strong>{{bike.name}}</strong> with id: <strong>{{bike.id}}</strong> ?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button 
+                        (click)="onDelete(bike.id)"  
+                        data-dismiss="modal"
+                        type="button" class="btn btn-danger">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <!-- <button 
+                class="btn btn-primary" title="edit"
+              >
+                  <span class="glyphicon glyphicon-edit"></span>
+              </button> -->
+            </td>          
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<router-outlet></router-outlet>

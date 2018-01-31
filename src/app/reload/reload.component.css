@@ -1,0 +1,27 @@
+.bg-body{
+    width: 100%;
+    margin-top: -20px;
+    height: 684px;
+    position: fixed;
+    z-index: 0;
+    background: #e4e4e47e;
+}
+
+div.reload{
+    border:16px solid #FFF;
+    border-top: 16px solid #f58e84;
+    border-radius:50%;
+    width:100px;
+    height:100px;
+    animation:rotate .5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    margin:202px auto;
+}
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg)
+    }
+    
+    100%{
+        transform:rotate(360deg)
+    }
+}

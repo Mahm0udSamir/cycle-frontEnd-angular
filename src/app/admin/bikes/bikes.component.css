@@ -1,0 +1,97 @@
+.table {
+    background: #0000001a;
+    text-align: center;
+    margin-top: 12px;    
+}
+
+
+.table th{
+    text-align: center
+}
+
+.bg-body{
+    width: 100%;
+    margin-top: -70px;
+    height: 680px;
+    position: fixed;
+    z-index: -1;
+    background: linear-gradient(to bottom right, #fffffff2, #df7a6b85);
+    
+}
+img{
+    position: fixed;
+    width: 100%;
+    margin-top: -70px;
+    z-index: -2;
+    left: 0;
+}
+
+.add{
+    position: absolute;
+    left: 43px;
+}
+
+.table-container {
+    background: #f96e60e8;
+    padding: 21px 0;
+    border-radius: 32px;
+    box-shadow:  0 0 30px #000000;
+    color: #fff;
+}
+
+.table-container input{
+    background: rgba(255, 255, 255, 0.384);
+    z-index: 0
+}
+.input-group-addon{
+    background: rgba(255, 255, 255, 0.384);
+    cursor: pointer;
+}
+.input-group-addon:hover{
+    border-color: #FFF;
+    box-shadow: inset 1px 1px 20px 0px #f9f7f796
+}
+
+.form-control:focus {
+    border-color: #FFF;
+    box-shadow: inset 1px 1px 20px 0px #f9f7f796
+}
+
+.table-container .btn-primary {
+    color: #fff;
+    background-color: #f4766800;
+    border-color: #fefeff;
+}
+.table-container .btn-primary:hover {
+    color: #f47868;
+    background-color: #ffffff;
+}
+
+.table-fixed{
+    width: 100%;
+    
+}
+.table-fixed thead {
+    width: 100%;
+}
+.table-fixed tbody {
+    max-height: 452px;
+    overflow-y: auto;
+    width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+    float: left;
+    border-bottom-width: 0;
+}
+tbody tr:hover{
+    background: #ffffff29;
+}
+.modal{
+    color: rgb(58, 58, 58);
+}
+.modal-body{
+    text-align: left;
+}

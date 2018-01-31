@@ -1,0 +1,17 @@
+<div class="bg-body "></div>
+
+<div class="form-body col-md-4 col-md-offset-4">
+    <a 
+    routerLink="/admin/bikes"
+    class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
+  <!-- <p>Are you sure you want to delete with <br>( name: {{name}}, -id: {{id}} )!</p> -->
+   
+    <button 
+      (click)="onDelete()"
+      type="submit" 
+      class="btn btn-primary">OK</button>
+    <button
+      
+      class="btn btn-default">Cancel</button>
+  
+</div>

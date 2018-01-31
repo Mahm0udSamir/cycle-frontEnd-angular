@@ -1,3 +1,20 @@
+.close{
+    color: red;
+    font-size: 24px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    opacity: .5;
+    border-radius: 10px;
+    border: 2px solid #ff000078;
+    padding: 0 9px 4px;
+    background: #ffffffa6;
+    font-weight: bold;
+    font-size: 30px;
+}
+.close:hover{
+    opacity: .7;
+}
 .input-group-addon{
     font-size: 20px;
     border: 0;
@@ -18,11 +35,10 @@
 .form-border{
     background: rgba(255, 255, 255, 0.28);
     border-top: 7px solid  #ff6a4a;
-    
     padding: 38px;
     padding-top: 0;
-    box-shadow:0px 4px 20px 2px #4a4a4a;
-    -webkit-box-box-shadow:0px 4px 20px 2px #b5b5b5;
+    box-shadow:0px 4px 20px 2px #ffffffbd;
+   
     
 }
 .form-border h2{
@@ -31,7 +47,6 @@
 }
 .form-border .btn{
     background: #fc6142;
-    
     padding: 14px;    
     padding-bottom: 45px;
     font-size: 20px;
@@ -41,9 +56,9 @@
     background: #f17157;
 }
 .blure-form{
-    
     /* background: rgba(173, 94, 53, 0.5); */
-    background: rgba(232, 177, 167, 0.45);    
+    /* background: rgba(232, 177, 167, 0.45);     */
+    background: rgba(0, 0, 0, 0.45);
     height: 1000px;
     position: fixed;
     z-index: 16;

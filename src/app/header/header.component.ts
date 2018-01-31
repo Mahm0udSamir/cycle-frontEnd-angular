@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../users/auth.service';
 import { Router } from '@angular/router';
+import { LoginServerService } from '../login/loginServer.service';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,22 +9,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  login = false;
-  constructor(private authService: AuthService,private router: Router) { }
+  login: boolean;
+  type: string;
+  constructor(
+    private router: Router,
+    private loginServerService: LoginServerService,
+    private authService: AuthService,
+
+  ) { }
 
   ngOnInit() {
+    const localLogin = JSON.parse(localStorage.getItem('login'));
+    const localType = localStorage.getItem('type');
+
+
+    if (!localStorage.getItem('token')) {
+      this.loginServerService.userType.subscribe(
+        (type: string) => {
+          this.type = type;
+          console.log('login', this.type);
+        }
+      );
+
+      this.loginServerService.loggedIn.subscribe(
+        (login) => {
+          this.login = login;
+        }
+      );
+    } else {
+      this.login = localLogin;
+      this.type = localType;
+      console.log(this.login, this.type);
+    }
   }
 
   onLogin() {
      if (this.login) {
-       this.authService.logout();
-       this.router.navigate(['home']);
-      //  this.login = false;
-     } else {
-       this.authService.login();
-      //  this.login = true;
+      // logout
+      // this.loginServerService.loggedIn.emit(false);
+      this.loginServerService.logOutService();
+      this.login = false;
+      this.router.navigate(['/']);
+    } else {
+      // login
+      this.router.navigate(['/home/login']);
      }
-     this.login = !this.login;
   }
 
 }
