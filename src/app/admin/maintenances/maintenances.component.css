@@ -1,0 +1,14 @@
+@import url("./../users/users.component.css");
+
+tr span.col{
+    position: absolute;
+    left: 79px;
+}
+
+img.user-img {
+    width: 72%;
+    position: initial;
+    z-index: 0;
+    margin: -18px 6px -23px -6px;
+    border-radius: 50%;
+}

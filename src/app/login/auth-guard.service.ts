@@ -20,7 +20,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
                 console.log('Auth ', authenticated);
                 if (authenticated) {
                     console.log('Auth');
-                    
                     return true;
                 } else {
                     console.log('not Auth');

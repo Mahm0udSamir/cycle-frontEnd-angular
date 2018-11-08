@@ -11,11 +11,10 @@
 
 .bg-body{
     width: 100%;
-    margin-top: -70px;
     height: 680px;
     position: fixed;
     z-index: -1;
-    background: linear-gradient(to bottom right, #fffffff2, #df7a6b85);
+    background: linear-gradient(to bottom right, #ffffff86, #474e5e);
     
 }
 img{
@@ -32,16 +31,18 @@ img{
 }
 
 .table-container {
-    background: #f96e60e8;
+    background: #286090;
     padding: 21px 0;
-    border-radius: 32px;
+    border-radius: 12px;
     box-shadow:  0 0 30px #000000;
     color: #fff;
+    margin-top: 66px;    
 }
 
 .table-container input{
     background: rgba(255, 255, 255, 0.384);
-    z-index: 0
+    z-index: 0;
+    color: #FFF;
 }
 .input-group-addon{
     background: rgba(255, 255, 255, 0.384);
@@ -54,7 +55,7 @@ img{
 
 .form-control:focus {
     border-color: #FFF;
-    box-shadow: inset 1px 1px 20px 0px #f9f7f796
+    /* box-shadow: inset 1px 1px 20px 0px #f9f7f773 */
 }
 
 .table-container .btn-primary {
@@ -63,7 +64,7 @@ img{
     border-color: #fefeff;
 }
 .table-container .btn-primary:hover {
-    color: #f47868;
+    color: #19698e;
     background-color: #ffffff;
 }
 

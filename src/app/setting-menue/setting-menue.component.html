@@ -1,0 +1,86 @@
+<div 
+  class="contain"
+  *ngIf="(type === 'user' || type === 'maintainance') && login"
+  >
+  <div class="dropdown contain">
+    <button 
+      class="btn btn-default dropdown-toggle setting" type="button" data-toggle="dropdown"
+      (click)="toggle =! toggle"
+      >
+     <img class="img-setting" src="../../assets/Settings-icon.png" alt="" width="41px"  >
+    </button>
+    <div 
+      id="triangle-right"
+      *ngIf="toggle"
+     ></div>
+     <!-- maintainance setting -->
+    <ul class="dropdown-menu open" *ngIf="toggle && type === 'maintainance'">
+      <li><a class="btn btn-default" [routerLink]="['/maintenace', 'update-email']">Update Email</a></li>
+      <li><a class="btn btn-default" [routerLink]="['/maintenace', 'update-name']">Update Name</a></li>
+      <li><a class="btn btn-default" [routerLink]="['/maintenace', 'update-password']">Update Password</a></li>
+       
+     </ul>
+
+     <!-- user setting -->
+    <ul class="dropdown-menu open" *ngIf="toggle && type === 'user'">
+      <li><a class="btn btn-default" [routerLink]="['/user', 'update-email']">Update Email</a></li>
+      <li><a class="btn btn-default" [routerLink]="['/user', 'update-name']">Update Name</a></li>
+      <li><a class="btn btn-default" [routerLink]="['/user', 'update-password']">Update Password</a></li>
+      <li><a class="btn btn-default" [routerLink]="['/user', 'update-balance']">Update Balance</a></li>
+        <!-- remove -->
+      <li>
+         
+          <a  class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            Delete Account
+          </a>
+          </li>
+     </ul>
+    </div>
+
+      <!-- Modal for delete-->
+      <!-- Button trigger modal -->
+   
+    
+    </div>
+    
+    <!-- Modal -->
+    <div 
+      class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title " id="myModalLabel"><strong> Are you sure you want to delete your account!</strong></h4>
+          </div>
+          <form>
+
+              <div class="modal-body">
+                  <div class="form-group">
+                      <input 
+                      [ngClass]="{
+                        'alert': !password.valid && password.touched,
+                        'alert-danger': !password.valid && password.touched}"
+                      type="password" 
+                      class="form-control" 
+                      name="password" 
+                      placeholder="Password"
+                      ngModel
+                      required
+                      minlength="6"
+                      #password="ngModel"
+                      >
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button 
+                  type="button" class="btn btn-danger"
+                  data-dismiss="modal"
+                  [disabled]="!password.valid"
+                  (click)="onDelete(password)"
+                >OK</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>

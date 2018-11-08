@@ -1,0 +1,45 @@
+<div class="bg-body "></div>
+
+<div class="form-body col-md-4 col-md-offset-4">
+    <a 
+    routerLink="/home"
+    class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
+  <h4>Update Balance</h4>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label class="control-label"> Balance </label>
+      <input 
+      [ngStyle]="{'border-color': !balance.valid && balance.touched? 'red': '#CCC'}"            
+      type="number" 
+      class="form-control" 
+      placeholder="0.00"  
+      name="balance"
+      ngModel
+      required
+      min="0"
+      #balance="ngModel"
+      >
+    </div>
+    <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="!balance.valid && balance.touched"
+      >
+      Require
+    </span>
+   
+    <button 
+      [disabled]="!f.valid"
+      type="submit" 
+      class="btn btn-primary">Save</button>
+    <a 
+      routerLink="/home"
+      class="btn btn-default">Cancel</a>
+
+      <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="message"
+      >
+        {{message}}
+      </span>
+  </form>
+</div>

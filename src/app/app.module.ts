@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { Md2Module } from 'md2';
 
 
 import { AppComponent } from './app.component';
@@ -29,7 +30,26 @@ import { NewBikeComponent } from './admin/bikes/new-bike/new-bike.component';
 import { RemveBikeComponent } from './admin/bikes/remve-bike/remve-bike.component';
 import { ReloadComponent } from './reload/reload.component';
 import { NameFilterPipe } from './shared/name-filter.pipe';
-
+import { MaintenancesService } from './admin/maintenances/maintenances.service';
+import { NewMaintenanceComponent } from './admin/maintenances/new-maintenance/new-maintenance.component';
+import { ToggleDirective } from './diractive/toggle.directive';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ComplaintService } from './admin/complaints/complaints.service';
+import { FeedbackComponent } from './admin/feedback/feedback.component';
+import { FeedbackService } from './admin/feedback/feedback.service';
+import { DropdownDirective } from './diractive/dropdown.directive';
+import { ProfileComponent } from './user/profile/profile.component';
+import { HistoryComponent } from './user/history/history.component';
+import { UserProfileService } from './user/userProfile.service';
+import { SettingMenueComponent } from './setting-menue/setting-menue.component';
+import { UpdateEmailComponent } from './user/update/update-email/update-email.component';
+import { UpdateNameComponent } from './user/update/update-name/update-name.component';
+import { UpdatePasswordComponent } from './user/update/update-password/update-password.component';
+import { UpdateBalanceComponent } from './user/update/update-balance/update-balance.component';
+import { UserFeedbackComponent } from './user/user-feedback/user-feedback.component';
+import { MaintenanceService } from './maintenance/maintenance.service';
+import { MaintenanceFeedbackComponent } from './maintenance/maintenance-feedback/maintenance-feedback.component';
+import { UsersComplaintsComponent } from './admin/complaints/users-complaints/users-complaints.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,19 +68,46 @@ import { NameFilterPipe } from './shared/name-filter.pipe';
     NewBikeComponent,
     RemveBikeComponent,
     ReloadComponent,
-    NameFilterPipe
+    NameFilterPipe,
+    ToggleDirective,
+    NewMaintenanceComponent,
+    ErrorPageComponent,
+    FeedbackComponent,
+    DropdownDirective,
+    ProfileComponent,
+    HistoryComponent,
+    SettingMenueComponent,
+    UpdateEmailComponent,
+    UpdateNameComponent,
+    UpdatePasswordComponent,
+    UpdateBalanceComponent,
+    UserFeedbackComponent,
+    MaintenanceFeedbackComponent,
+    UsersComplaintsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
     FormsModule,
+    Md2Module,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAJGKbI-G4vQHKsat8lGrpMs_BHbsOFuxQ'
     }),
     AgmSnazzyInfoWindowModule
   ],
-  providers: [AuthGuard, AuthService, LoginServerService, BikeService, UserService],
+  providers: [
+    AuthGuard,
+    AuthService,
+    LoginServerService,
+    BikeService,
+    UserService,
+    MaintenancesService,
+    FeedbackService,
+    ComplaintService,
+    UserProfileService,
+    MaintenanceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

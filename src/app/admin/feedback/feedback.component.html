@@ -1,0 +1,92 @@
+<img class="bg-img" src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+<div
+  *ngIf="showDetails"
+  class="col-md-4 contain-form">
+  <span 
+  (click)="showDetails=!showDetails"
+  class="close">x</span>
+  <div>
+    <img class="img-pro col-md-5" [src]="maintenance_img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/'+maintenance_img : './../../../assets/profile.png' " alt="">
+
+    <p class="col-md-7">
+      UserName: <strong>{{user_name}}</strong> <br>
+      {{type === 'user'? 'UserID': 'SupervisorID' }} <strong>{{user_id}}</strong>
+    </p>
+  </div>
+  <div class="col-md-12 feedback">
+    <h4>Feedback</h4>
+    <p>
+      {{feedback}}
+    </p>
+  </div>
+    <button class="dropdown col-md-12" appDropdown>
+        <a   class="dropdown-toggle" role="button">Options <span class="caret"></span></a>
+        <ul class="dropdown-menu col-md-12">
+          <li (click)="onDelete();">Delete</li>
+          <li *ngIf="type === 'user'" (click)="onAddToHome();">Set To Home Page</li>
+        </ul>
+      </button>
+</div> 
+
+
+<div 
+  [ngClass]="{'col-md-offset-2': !showDetails}"
+  class="col-md-8">
+  <div class="contain">
+
+      <div>
+          
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#user" aria-controls="user" role="tab" data-toggle="tab">Users Feedback</a></li>
+              <li role="presentation">
+                <a href="#maintenances" aria-controls="maintenances" role="tab" data-toggle="tab">Supervisors Feedback</a></li>
+            </ul>
+          
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="user">
+                  <div  
+                  *ngFor="let feedback of userFeedbacks"
+                  (click)="getData(feedback); type = 'user' "
+                  [ngStyle]="{
+                    'background': showDetails && feedback.feedback_id == feedback_id? '#ccd6db': '#FFF',
+                    'box-shadow': showDetails && feedback.feedback_id == feedback_id? '0 0 17px 0 #dff0d8' : '0 0 13px 0px #213746'
+                }"      
+                  class="complain col-md-5">
+                    <p class="title-par">
+                      <i>Feedback ID : {{feedback.feedback_id}}</i>
+                      <span 
+                      class="glyphicon glyphicon-edit edit-icon"></span>
+                    </p>
+                    <p>{{feedback.feedback}}</p>
+                  </div>
+
+              </div>
+              <div role="tabpanel" class="tab-pane" id="maintenances">
+                  <div  
+                  *ngFor="let feedback of maintenanceFeedbacks"
+                  (click)="getMaintenanceData(feedback); type = 'maintenances' "
+                  [ngStyle]="{
+                    'background': showDetails && feedback.feedback_id == feedback_id? '#ccd6db': '#FFF',
+                    'box-shadow': showDetails && feedback.feedback_id == feedback_id? '0 0 17px 0 #dff0d8' : '0 0 13px 0px #213746'
+                }"       
+                  class="complain col-md-5">
+                    <p class="title-par">
+                      <i>Feedback ID : {{feedback.feedback_id}}</i>
+                      <span 
+                      class="glyphicon glyphicon-edit edit-icon"></span>
+                    </p>
+                    <p>{{feedback.feedback}}</p>
+                  </div>
+              </div>
+             
+            </div>
+          
+          </div>
+  </div>
+</div>
+        
+        

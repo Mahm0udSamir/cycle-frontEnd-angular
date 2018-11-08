@@ -14,11 +14,17 @@ export class ReloadComponent implements OnInit {
   ngOnInit() {
     this.fdir = this.route.snapshot.params['fdir'];
     this.sdir = this.route.snapshot.params['sdir'];
-    console.log(`/${this.fdir}/${this.sdir}`);
-    setTimeout(() => {
-      this.router.navigate([`/${this.fdir}/${this.sdir}`]);
-
-    }, 500);
+    if ( this.fdir === 'home' && this.sdir === 'home' ) {
+      console.log(`/${this.fdir}/${this.sdir}`);
+      setTimeout(() => {
+        this.router.navigate([`/`]);
+       }, 1000);
+    }else {
+      console.log(`/${this.fdir}/${this.sdir}`);
+      setTimeout(() => {
+        this.router.navigate([`/${this.fdir}/${this.sdir}`])
+      }, 500);
+    }
   }
 
 }

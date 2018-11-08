@@ -1,0 +1,80 @@
+
+.delete-icon{
+    position: absolute;
+    right: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    top: -4px;
+    cursor: pointer;
+}
+.edit-icon{
+    position: absolute;
+    right: 35px;
+    top: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.complain{
+    background: #EEE;
+    margin-bottom: 23px;
+    padding: 16px;
+    margin-left: 5%;
+    box-shadow: 0 0 17px 0 #000;
+    line-height: 1.7;
+}
+.contain{
+    display: block;
+    height: 591px;
+    overflow-y: auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0px #000;
+    padding-top: 21px;
+    padding-left: 23px;
+    margin-top: 70px;    
+}
+
+.bg-body{
+    width: 100%;
+    height: 680px;
+    position: fixed;
+    z-index: -1;
+    background: linear-gradient(to bottom right, #ffffff86, #474e5e);
+    
+}
+img.bg-img{
+    position: fixed;
+    width: 100%;
+    margin-top: -70px;
+    z-index: -2;
+    left: 0;
+}
+
+.contain-form{
+    padding-left: 76px;    
+    margin-top: 54px;
+    height: 623px;
+    padding-top: 22px;
+    box-shadow: -2px 0 13px 2px #000;    
+}
+
+label{
+    margin-top: 13px;
+    color: #FFF;
+}
+.title-par{
+    background: #3f8bba;
+    margin: -16px -16px 12px -16px;
+    padding: 3px;
+    color: #FFF;
+    padding-left: 14px;
+}
+
+.update-at{
+    float: right;
+    font-size: 12px;
+    color: #213746;
+    margin-bottom: -10px;
+    margin-right: -7px;
+}

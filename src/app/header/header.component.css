@@ -1,32 +1,31 @@
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #fffffff7;
-    background-color: #f38075;
+    background-color: #213746;
 }
 .navbar-default {
     background-color: #ffffff;
     border: 0;
 }
 .navbar-default .navbar-nav>li>a {
-    color: #f38075;
+    color: #213746;
     font-weight: bold;
 }
 .navbar-default .navbar-nav>li>a:hover {
     color: #fffffff7;
-    background-color: #f38075;
+    background-color: #213746;
 }
 .btn-default {
-    color: #f38075;
     background-color: #fff;
-    border-color: #f38075;
-    border-radius: 15px;
+    border-color: #213746;
+    /* border-radius: 15px;  */
     font-weight: bold;
-    box-shadow: 0 0 9px -1px #f38075;
+    /* box-shadow: 0 0 9px -1px #213746; */
 }
-.btn-default:hover{
-    background: #f38075;
+/* .btn-default:hover{
+    background: #213746;
     color: #FFF
-}
+} */
 /* 
 .container-fluid{
     position: fixed;
@@ -34,3 +33,84 @@
     z-index: 2;
     background: linear-gradient(#0000009e, #ffffff42);
 } */
+
+.menu-left{
+    background:#273649;
+    position: fixed;
+    left: 0;
+    top: 52px;
+    height: 628px;
+    z-index: 3;
+    color: #fff
+}
+.menu-left a{
+    color: #FFF;
+    margin-right: 5px;
+}
+.menu-left >ul {
+    list-style: none;
+    margin-left: -5px;
+    margin-right: -9px;
+}
+.menu-left >ul >li{
+    margin: 11px 9px 11px -35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.menu-left >ul >li img{
+    width: 28px;
+    margin-right: 0;
+    margin-left: 11px; 
+}
+#menu-btn{
+    z-index: 2;
+    position: fixed;
+    top: 10px;
+    left: 8px;    
+}
+#blur-all{
+    background:#ffffff5e;
+    width: 100%;
+    height: 700px;
+    position: fixed;
+    z-index: 2;
+    top: 52px;
+}
+.menu-left .list{
+    margin-bottom: 0;
+    margin-left: 34px;
+    margin-right: 9px;
+}
+.active-link{
+    background:  #749aaf;
+}
+.active-link2{
+    background:  #ffffff40;
+}
+.active-link3{
+    background:  #ffffff45;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    left: 66px;
+    background: #fff;
+    width: 100%;
+    margin-left: -66px;
+    border-radius: 0;
+}
+
+.img-profile{
+    width: 134px;
+    height: 134px;
+    box-shadow: 0 0 7px 0px #fff;
+    border-radius: 50%;
+    margin-left: 41px;
+    margin-top: 11px;
+}
+
+.center{
+    text-align: center;
+}

@@ -1,0 +1,64 @@
+<img class="bg-img" src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+<div
+  *ngIf="showDetails"
+  class="col-md-4 contain-form">
+  <span 
+  (click)="showDetails=!showDetails"
+  class="close">x</span>
+  <div>
+    <img class="img-pro col-md-5" [src]="user_img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/'+user_img : './../../../assets/profile.png' " alt="">
+
+    <p class="col-md-7">
+      UserName: <strong>{{user_name}}</strong> <br>
+      UserID<strong>{{user_id}}</strong>
+    </p>
+  </div>
+  <div class="col-md-12 feedback">
+    <h4>User Complaint</h4>
+    <p>
+      {{complain}}
+    </p>
+  </div>
+    <button class="dropdown col-md-12 btn btn-primary"  (click)="onDelete();">Delete</button>
+</div> 
+
+
+<div 
+  [ngClass]="{'col-md-offset-2': !showDetails}"
+  class="col-md-8">
+  <div class="contain">
+
+      <div>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active">
+                  <div  
+                  *ngFor="let complain of complains"
+                  (click)="getData(complain)"
+                  [ngStyle]="{
+                    'background': showDetails && complain.complain_id == complain_id? '#ccd6db': '#FFF',
+                    'box-shadow': showDetails && complain.complain_id == complain_id? '0 0 17px 0 #dff0d8' : '0 0 13px 0px #213746'
+                  }"      
+                  class="complain col-md-5">
+                    <p class="title-par">
+                      <i style="font-size: 12px">
+                        Bike Name: <strong>{{complain.bike_name}}</strong> -  Bike ID: <strong>{{complain.bike_id}}</strong>
+                        </i>
+                        <span 
+                        class="glyphicon glyphicon-zoom-in edit-icon"></span>
+                      </p>
+                      <p>{{complain.complain}}</p>
+                      <span class="update-at">
+                          Complaint ID: {{complain.complain_id}}
+                      </span>
+                      
+                  </div>
+
+              </div>
+             
+             
+            </div>
+          
+          </div>
+  </div>
+</div>

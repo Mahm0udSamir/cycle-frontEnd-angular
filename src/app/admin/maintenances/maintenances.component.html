@@ -1,3 +1,195 @@
-<p>
-  maintenances works!
-</p>
+<img src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+  <div class="table-container col-md-10 col-md-offset-1">
+      <a 
+      routerLink="/admin/maintenances/new"
+      class="add btn btn-primary">Add Supervisor</a>
+      <div class="input-group col-md-offset-4 col-md-4 search">
+        <input 
+        type="text" 
+        class="form-control" 
+        name="search" 
+        placeholder="Search"
+        [(ngModel)]="search"
+        >
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    <table class="table table-fixed" >
+        <thead>
+          <tr>
+            <!-- <th class="col-xs-1"></th> -->
+            <th class="col-xs-1"><span class="col">ID</span></th>
+            <th class="col-xs-2">Name</th>
+            <th class="col-xs-3">Email</th>
+            <th class="col-xs-2">Created at</th>
+            <th class="col-xs-2">Updated at</th>
+            <th class="col-xs-2">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let maintenance of maintenances | nameFilter:search"  #toggle="hide" hide="true">
+            <td class="col-xs-1">
+              <img 
+                class="user-img" 
+                [src]="maintenance.img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/' + maintenance.img : './../../../assets/profile-img.png'"
+                >  
+                  <span style="width:10%;padding: 0;
+                    margin: 0;
+                    display: inline-block;
+                    width: 0%;
+                    margin-left: 10px;">{{maintenance.id}}</span>
+            </td>
+            <!-- <td class="col-xs-1">{{maintenance.id}}</td> -->
+              <!-- if for updateing  -->
+              <ng-container *ngIf="toggle.hide; else elseTemplate">
+                  <td class="col-xs-2">{{maintenance.name}}</td>
+                  <td class="col-xs-3">{{maintenance.email}}</td>
+                </ng-container>
+                <ng-template #elseTemplate>     
+                    <td class="col-xs-2">   
+                       <input type="text" class="form-control"  placeholder="Name" #name  value="{{maintenance.name}}">
+
+                    </td>
+                    <td class="col-xs-3">
+                        <input type="text" class="form-control"  placeholder="Name" #email [value]="maintenance.email">                    
+                    </td>
+                </ng-template>
+  
+            <td class="col-xs-2">{{maintenance.created_at === null? '2018-02-10 05:53:30': maintenance.created_at}}</td>
+            <td class="col-xs-2">{{maintenance.updated_at === null? '2018-02-10 05:53:30': maintenance.updated_at}}</td>
+            <td class="col-xs-2" >
+               
+<!-- 
+                <ng-container *ngIf="toggle.hide; else template">
+                    
+                    <button
+                    *ngIf="toggle.hide"
+                    data-toggle="modal" [attr.data-target]="'#' + maintenance.id"
+                    class="btn btn-primary" >
+                       <span class="glyphicon glyphicon-remove"></span>     
+                    </button>
+                  
+                    <button
+                    (click)="toggle.hide = !toggle.hide"
+                    class="btn btn-primary" >
+                        <span class="glyphicon glyphicon-edit"></span>     
+                    </button>
+      
+    
+                  </ng-container>  
+                  <ng-template #template>
+                      <button
+                      (click)="edit(maintenance.id, name, email)"
+                      class="btn btn-primary" >
+                         <span class=" glyphicon glyphicon-ok"></span>     
+                      </button>
+                    
+                      <button
+                      (click)="toggle.hide = !toggle.hide"
+                      class="btn btn-primary" >
+                          <span class=" glyphicon glyphicon-share-alt"></span>     
+                      </button>
+                  </ng-template>  
+                  
+               -->
+
+              <!-- edit or remove -->
+              <ng-container *ngIf="toggle.hide; else template">
+                  <!-- remove -->
+                  <button
+                  *ngIf="toggle.hide"
+                  data-toggle="modal" [attr.data-target]="'#' + maintenance.id"
+                  class="btn btn-primary" >
+                     <span class="glyphicon glyphicon-remove"></span>     
+                  </button>
+                
+                  <!-- eidt -->
+                  <button
+                  (click)="toggle.hide = checkEdit()"
+                  class="btn btn-primary" >
+                      <span class="glyphicon glyphicon-edit"></span>     
+                  </button>
+                </ng-container>  
+                <!-- save edit or cancle -->
+                <ng-template #template>
+                    <button
+                    (click)="setNewName(); setNewEmail()"
+                    data-toggle="modal" [attr.data-target]="'#ID' + maintenance.id"                  
+                    class="btn btn-primary" >
+                       <span class=" glyphicon glyphicon-ok"></span>     
+                    </button>
+                  
+                    <button
+                    (click)="toggle.hide = cancleEdit()"
+                    class="btn btn-primary" >
+                        <span class=" glyphicon glyphicon-share-alt"></span>     
+                    </button>
+                </ng-template>  
+                
+                 <!-- Modal for save edit-->
+                  <div class="modal fade" [attr.id]="'ID' + maintenance.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                          </div>
+                          <div class="modal-body">
+                            <ng-container *ngIf="newName != maintenance.name || newEmail != maintenance.email ;else alert">
+                              
+                              Are you sure you want to change <br> 
+                              <span *ngIf="newName != maintenance.name">
+                                  {{maintenance.name}} to <strong>{{newName}}</strong>  
+                                  <br>
+                              </span>
+                              <span *ngIf="newEmail != maintenance.email">
+                                  {{maintenance.email}} to <strong>{{newEmail}}</strong>  
+                              </span>
+                            </ng-container>
+                            <ng-template #alert>
+                              There is no change!
+                            </ng-template>
+                            
+                          </div>
+                          <div class="modal-footer">
+                            <button 
+                            type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button 
+                            *ngIf="newName != maintenance.name || newEmail != maintenance.email"
+                             (click)="saveEdit(maintenance.email, maintenance.name, maintenance.id); toggle.hide = cancleEdit()"
+                              data-dismiss="modal"
+                              type="button" class="btn btn-warning">Save Change</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+               <!-- Modal for delete-->
+                <div class="modal fade" [attr.id]="maintenance.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Confirm Deletion</h4>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete 
+                          <strong>{{maintenance.name}}</strong> with id: <strong>{{maintenance.id}}</strong> ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button 
+                            (click)="onDelete(maintenance.id)"
+                            data-dismiss="modal"
+                            type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </td>
+            
+           
+          </tr>
+        </tbody>
+    </table>
+</div>
+<router-outlet></router-outlet>

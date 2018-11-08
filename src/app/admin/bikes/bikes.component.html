@@ -21,7 +21,7 @@
           <tr>
             <th class="col-xs-1">ID</th>
             <th class="col-xs-2">Name</th>
-            <th class="col-xs-1">Booked</th>
+            <th class="col-xs-1">Status</th>
             <th class="col-xs-3">Created at</th>
             <th class="col-xs-3">Updated at</th>
             <th class="col-xs-2">Action</th>
@@ -31,7 +31,7 @@
           <tr *ngFor="let bike of bikes | nameFilter:search" >
             <td class="col-xs-1">{{bike.id}}</td>
             <td class="col-xs-2">{{bike.name}}</td>
-            <td class="col-xs-1">{{bike.is_locked === '0'?false : true}}</td>
+            <td class="col-xs-1">{{bike.status}}</td>
             <td class="col-xs-3">{{bike.created_at}}</td>
             <td class="col-xs-3">{{bike.updated_at}}</td>
             <td class="col-xs-2">

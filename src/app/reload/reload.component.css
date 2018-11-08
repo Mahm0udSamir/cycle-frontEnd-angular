@@ -1,6 +1,6 @@
 .bg-body{
     width: 100%;
-    margin-top: -20px;
+    margin-top: -147px;
     height: 684px;
     position: fixed;
     z-index: 0;
@@ -9,7 +9,7 @@
 
 div.reload{
     border:16px solid #FFF;
-    border-top: 16px solid #f58e84;
+    border-top: 16px solid #19698e;
     border-radius:50%;
     width:100px;
     height:100px;

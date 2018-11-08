@@ -1,0 +1,45 @@
+<div class="bg-body "></div>
+ 
+<div class="form-body col-md-4 col-md-offset-4">
+    <a 
+    routerLink="/home"
+    class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
+  <h4>Add Feedback</h4>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <textarea 
+       class="form-control" rows="3"
+       [ngStyle]="{'border-color': !feedback.valid && feedback.touched? 'red': '#CCC'}"             
+       placeholder="Feedback"  
+       name="feedback"
+       ngModel
+       minlength="8"
+       required
+       #feedback="ngModel"
+       ></textarea>
+    </div>
+    <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="!feedback.valid && feedback.touched"
+      >
+      Require
+    </span>
+   
+    <button 
+      [disabled]="!f.valid"
+      type="submit" 
+      class="btn btn-primary">Ok</button>
+    <a 
+      routerLink="/home"
+      class="btn btn-default">Cancel</a>
+
+      <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="message"
+      >
+        {{message}}
+      </span>
+  </form>
+</div>
+
+

@@ -1,0 +1,91 @@
+<div class="bg-body "></div>
+
+<div class="form-body col-md-4 col-md-offset-4">
+    <a 
+    routerLink="/admin/maintenances"
+    class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
+  <h4>Add Maintenance</h4>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label class="control-label"> Name </label>
+      <input 
+      [ngStyle]="{'border-color': !name.valid && name.touched? 'red': '#CCC'}"            
+      type="text" 
+      class="form-control" 
+      placeholder="Name"  
+      name="name"
+      ngModel
+      required
+      #name="ngModel"
+      >
+    </div>
+    <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="!name.valid && name.touched"
+      >
+      Require
+    </span>
+
+    <div class="form-group">
+      <label class="control-label"> Password</label>
+      <input 
+      [ngStyle]="{'border-color': !password.valid && password.touched? 'red': '#CCC'}"      
+      type="password" 
+      class="form-control" 
+      placeholder="Password"  
+      name="password"
+      ngModel
+      required
+      #password="ngModel"
+      >
+    </div>
+    <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="!password.valid && password.touched"
+      >
+      Require
+    </span>
+
+    <div class="form-group">
+      <label class="control-label"> Email </label>
+      <input 
+      [ngStyle]="{'border-color': !email.valid && email.touched? 'red': '#CCC'}"
+      type="email" 
+      class="form-control" 
+      placeholder="Email"  
+      name="email"
+      ngModel
+      required
+      email
+      #email="ngModel"
+      >
+    </div>
+ 
+    <ul 
+      class="help-block" style="color: #ff0000d1; list-style: none; margin-left:-38px"
+      *ngIf="!email.valid && email.touched"
+      >
+        <li
+          *ngIf="email.value ===''; else notValid"
+        > Require</li> 
+        <li  
+          #notValid
+        >Email not valid!</li>
+    </ul> 
+    <ul 
+      class="help-block" style="color: #ff0000d1; list-style: none; margin-left:-38px"
+      *ngIf="message"
+      >
+        <li>{{message}}</li>
+    </ul> 
+
+    <!-- <span  class="help-block alert-danger"></span> -->
+    <button 
+      [disabled]="!f.valid"
+      type="submit" 
+      class="btn btn-primary">Add</button>
+    <a 
+      routerLink="/admin/maintenances"
+      class="btn btn-default">Cancel</a>
+  </form>
+</div>

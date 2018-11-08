@@ -1,0 +1,45 @@
+<div class="bg-body "></div>
+
+<div class="form-body col-md-4 col-md-offset-4">
+    <a 
+    routerLink="/home"
+    class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
+  <h4>Update Email</h4>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+    <div class="form-group">
+      <label class="control-label"> New Email </label>
+      <input 
+      [ngStyle]="{'border-color': !remail.valid && remail.touched? 'red': '#CCC'}"      
+      type="email" 
+      class="form-control" 
+      placeholder="New Email"  
+      name="remail"
+      ngModel
+      email
+      required
+      #remail="ngModel"
+      >
+    </div>
+    <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="!remail.valid && remail.touched"
+      >
+      Require
+    </span>
+    <button 
+      [disabled]="!f.valid"
+      type="submit" 
+      class="btn btn-primary">Save</button>
+    <a 
+      routerLink="/home"
+      class="btn btn-default">Cancel</a>
+
+      <span
+      class="help-block" style="color: #ff0000d1"
+      *ngIf="message"
+      >
+        {{message}}
+      </span>
+  </form>
+</div>

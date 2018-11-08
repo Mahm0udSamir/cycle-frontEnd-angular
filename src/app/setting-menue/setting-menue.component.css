@@ -1,0 +1,63 @@
+.contain{
+    position: fixed;
+    z-index: 2;
+    top: 114px;
+    right: 0;
+}
+.dropdown-menu{
+    top: -11%;
+    left: -180px;
+    display: block;
+}
+
+img.img-setting{
+    border-radius:50%;
+    width:50px;
+    height:50px;
+    animation:rotate 1.8s linear infinite;
+}
+#triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent;
+    border-left: 62px solid  rgba(255, 255, 255, 0.637);
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    top: 21px;
+    left: -22px;
+    z-index: 10001;
+}
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg)
+    }
+    
+    100%{
+        transform:rotate(360deg)
+    }
+}
+
+button{
+    cursor: pointer;
+}
+.setting {
+    background-color: #fff9;
+}
+.modal-backdrop{
+    z-index: 1000;
+} 
+ul{
+    background-color: #fff9;
+}
+li{
+    margin: 2px;    
+}
+.alert{
+    margin-bottom: 0;
+}
+.modal-title{
+    text-align: center
+}
+.modal-body {
+    padding-bottom: 0;
+}

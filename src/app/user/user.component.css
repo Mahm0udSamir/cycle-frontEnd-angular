@@ -1,0 +1,5 @@
+@import url('./../admin/complaints/complaints.component.css');
+
+.bg-body{
+    background: linear-gradient(to bottom right, #295d7b, #fff0);
+}

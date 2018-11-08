@@ -2,11 +2,9 @@
     color: red;
     font-size: 24px;
     position: absolute;
-    right: 1px;
-    top: 1px;
+    right: 0;
+    top: 0;
     opacity: .5;
-    border-radius: 10px;
-    border: 2px solid #ff000078;
     padding: 0 9px 4px;
     background: #ffffffa6;
     font-weight: bold;
@@ -33,32 +31,31 @@
 }
 
 .form-border{
-    background: rgba(255, 255, 255, 0.28);
-    border-top: 7px solid  #ff6a4a;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.1);
+    border-top: 7px solid #337ab7;
     padding: 38px;
     padding-top: 0;
-    box-shadow:0px 4px 20px 2px #ffffffbd;
-   
-    
+    box-shadow: 0px 4px 15px 0px #999;
 }
 .form-border h2{
     text-align: center;
     color: #FFF;
 }
 .form-border .btn{
-    background: #fc6142;
+    background: #337ab7;    
     padding: 14px;    
     padding-bottom: 45px;
     font-size: 20px;
     color: #FFF;
 }
 .form-border .btn:hover{
-    background: #f17157;
+    background: #286090;
 }
 .blure-form{
     /* background: rgba(173, 94, 53, 0.5); */
     /* background: rgba(232, 177, 167, 0.45);     */
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.73);
     height: 1000px;
     position: fixed;
     z-index: 16;
@@ -68,7 +65,7 @@
 @media (min-width: 992px) { 
     .form-border{
         margin-left: 30%;
-        margin-top: 7%;
+        margin-top: 14%;
     }
     
  }
@@ -82,7 +79,13 @@
      background-color:red;
  }
  .help-block{
-     color: red
+        background: #fffafac2;
+        margin-top: 21px;
+        color: red;
+        list-style: none;
+        margin-bottom: -26px;
+        text-align: center;
+        padding-left: 0;
  }
  .error{
      color: red;
@@ -91,4 +94,13 @@
  }
  .errorIcon{
      color: rgba(255, 0, 0, 0.527);
+ }
+ .change{
+    color: #FFF;
+    margin-top: 43px;
+    margin-bottom: -29px;
+    text-align: center;
+ }
+ .change button{
+    padding: 5px;    
  }

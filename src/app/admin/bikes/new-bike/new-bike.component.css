@@ -5,6 +5,7 @@
     border-radius: 6px;
     top: 5%;
     position: fixed;
+    z-index: 11
 }
 .form-body h4{
     text-align: center;
@@ -13,10 +14,9 @@
 
 .bg-body{
     width: 100%;
-    margin-top: -76px;
     height: 684px;
     position: fixed;
-    z-index: 0;
+    z-index: 10;
     background: #000000ba;
     
 }
@@ -24,4 +24,7 @@
 .btn{
     float: right;
     margin-left: 10px;
+}
+.has-error{
+    border-color: red;
 }

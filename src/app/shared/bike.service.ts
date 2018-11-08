@@ -13,18 +13,21 @@ export class BikeService {
 
     // get all bikes
     getAllbikes() {
-        return this.http.get('https://mousaelenanyfciscu.000webhostapp.com/app/webservice/bike/bikes')
+        const body = `client_id=webApp&client_pass=bicloud_App2018#@`;
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post('https://mousaelenanyfciscu.000webhostapp.com/app/webservice/bike/bikes', body, {headers})
             .map(
             (response: Response) => {
                 this.bikes = response.json();
                 return response.json();
             }
             )
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => Observable.throw(error));
     }
 
     // add one
-    addBike(bike: { name: string, lat: number, lng: number, is_locked: number }) {
+    addBike(bike: { name: string, lat: number, lng: number, status: string }) {
         // added to dom
         // this.refreshBikes.subscribe(
         //     (bikes: Bike[]) => {
@@ -46,7 +49,8 @@ export class BikeService {
 
 
         // added to server
-        const body = 'name=' + bike.name + '&lat=' + bike.lat + '&lng=' + bike.lng + '&is_locked=' + bike.is_locked;
+        // tslint:disable-next-line:max-line-length
+        const body = `name=${bike.name}&lat=${bike.lat}&lng=${bike.lng}&status=${bike.status}&client_id=webApp&client_pass=bicloud_App2018#@`;
         const headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -56,7 +60,7 @@ export class BikeService {
                 return response.json();
             }
             )
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => Observable.throw(error));
     }
 
     // remove one
@@ -66,7 +70,7 @@ export class BikeService {
         // this.refreshBikes.emit(this.bikes);
 
         // remove from server
-        const body = 'id=' + id;
+        const body = `id=${id}&client_id=webApp&client_pass=bicloud_App2018#@`;
         const headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -75,6 +79,6 @@ export class BikeService {
             (response: Response) => {
                 return response.json();
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => Observable.throw(error));
     }
 }

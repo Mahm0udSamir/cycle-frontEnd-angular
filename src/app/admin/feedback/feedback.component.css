@@ -1,0 +1,108 @@
+@import url('./../complaints/complaints.component.css');
+.complain{
+    height: 92px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.contain{
+    overflow-y: hidden;    
+}
+.contain-form{
+    background: rgb(117, 148, 174);
+    padding-top: 50px;
+}
+.contain-form> div p.col-md-7{
+    padding-left: 24px;
+    padding-top: 9px;
+    color: #FFF;
+}
+
+.img-pro{
+    height: 112px;
+    border-radius: 13px;
+    box-shadow: 0 0 11px 0px #213746;
+    padding: 0;
+}
+
+.feedback h4{
+    color: #FFF;
+    text-align: center;
+    background: #3994b8;
+    padding: 8px;
+}
+.feedback{
+    margin-top: 20px;
+    padding-top: 6px;
+    padding-bottom: 20px;
+    background: #efefefb5;
+    border-radius: 6px;
+    box-shadow: 0 0 13px 0px #213746;
+}
+
+.feedback p{
+    height: 200px;
+    overflow-y: auto;
+}
+
+button.dropdown{
+    margin-top: 20px;
+    padding: 8px;
+    font-weight: bold;
+}
+ul.dropdown-menu li{
+    font-weight: 500;
+    padding-left: 17px;
+    background: #ccd6db;
+    margin: 2px 0px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+ul.dropdown-menu li:hover{
+    background: #FFF
+}
+
+.open>.dropdown-menu {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.close{
+    color: red;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 31px;
+}
+.close:hover{
+    opacity: .7    
+}
+
+.edit-icon{
+    position: absolute;
+    right: 9px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    margin-top: -20px;
+    margin-left: -24px;
+    padding-left: 67px;
+    margin-bottom: 14px;
+}
+
+.nav-tabs>li>a:hover{
+    border-bottom: 4px solid #eee;    
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border-bottom: 4px solid #858b92;
+}
+.tab-content{
+    display: block;
+    overflow-y: auto;
+    height: 506px;    
+}

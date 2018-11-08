@@ -6,20 +6,30 @@
     class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></a>
   <h4>Add Bike</h4>
   <form (ngSubmit)="onSubmit()" #f="ngForm">
-    <div class="form-group" [ngClass]="{'has-error': errorMessage != null}">
+    <div class="form-group">
       <label class="control-label"> Bike name </label>
       <input 
+      [ngStyle]="{'border-color': (!name.valid && name.touched) ||  errorMessage !== null? 'red': '#CCC'}"            
       type="text" 
       class="form-control" 
       placeholder="Name"  
       name="name"
       ngModel
       required
-     [(ngModel)]="name"
       (keyup)="onKey()"
+      #name="ngModel"
       >
     </div>
-    <span  class="help-block alert-danger">{{errorMessage}}</span>
+    <span 
+     *ngIf="errorMessage"
+     class="help-block alert-danger">{{errorMessage}}</span>
+    <span
+    class="help-block alert-danger"
+    *ngIf="!name.valid && name.touched"
+    >
+      Require
+    </span>
+
     <button 
       [disabled]="!f.valid || errorMessage != null"
       type="submit" 

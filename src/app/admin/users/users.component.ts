@@ -1,37 +1,57 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { User } from '../../shared/user';
 import { Router } from '@angular/router';
+import { Md2Toast } from 'md2/toast/toast';
+
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   search: string;
   users: User[];
-  constructor(private userService: UserService, private router: Router) { }
+  time;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toast: Md2Toast) { }
 
   ngOnInit() {
-    // setInterval(
-    //   () => {
 
-        this.userService.getAllUsers().subscribe(
-          users => {
+    this.userService.getAllUsers().subscribe(
+      users => {
+        this.users = users;
+        console.log(this.users);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.time = setInterval(() => {
+      this.userService.getAllUsers().subscribe(
+        users => {
+          if ( JSON.stringify(this.users) !==  JSON.stringify(users)) {
             this.users = users;
-            console.log(this.users);
-          },
-          error => {
-            console.log(error);
+            console.log('updated users');
           }
-        );
-      // },1000
-    // )
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }, 1000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.time);
   }
 
   onDelete(id) {
-    console.log('delete by id', id );
+    console.log('delete by id', id);
     this.userService.deleteUser(id).subscribe(
       data => {
         if (data.success) {
@@ -43,7 +63,7 @@ export class UsersComponent implements OnInit {
       error => {
         console.log(error);
       }
-      );
+    );
   }
 
 }

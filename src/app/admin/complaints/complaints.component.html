@@ -1,3 +1,101 @@
-<p>
-  complaints works!
-</p>
+<img class="bg-img" src="../../../assets/cyclists2.jpg" alt="">
+<div class="bg-body "></div>
+<div
+ [ngStyle]="{'background': showEditOptions? 'rgb(117, 148, 174)':'#00000045'}"
+  class="col-md-4 contain-form">
+  <form >
+    <div class="form-group" >
+      <label style="margin-left: 127px; font-size: 20px;" >Complaint</label>
+      <textarea 
+        type="text"
+        class="form-control"
+        placeholder="Complaint"
+        name="complaint"
+        ngModel
+        [(ngModel)]="content"
+        minlength="6"
+        rows="9" cols="50"
+        #complain="ngModel"
+        (keyup)="checkEdit()"
+        required>
+        </textarea>
+
+        <ng-container *ngIf="!showEditOptions; else elseTemplate">
+          <label>
+            <button 
+              [disabled]="!complain.valid"
+              (click)="onAdd()"
+              class="btn btn-primary">Add Complain</button>       
+          </label>
+    
+        </ng-container>
+        <ng-template #elseTemplate>
+          <label>
+            <!-- for edit -->
+           <button 
+             [disabled]="complain.invalid || checkEdit()"
+              (click)="onSaveChange()"
+              class="btn btn-primary">Save Change</button>       
+            </label>
+            <label>
+              <button 
+              (click)="showEditOptions = false; content = ''"
+              class="btn btn-default">Cancle</button>       
+            </label>
+          </ng-template>
+          
+        
+
+        </div>
+    </form>
+</div>
+
+<div class="col-md-8 ">
+
+
+  <div class="contain">
+      <div 
+      *ngFor="let complain of complains"
+      [ngStyle]="{
+        'background': showEditOptions && complain.id == id? '#ccd6db': '#FFF',
+        'box-shadow': showEditOptions && complain.id == id? '0 0 17px 0 #dff0d8' : '0 0 13px 0px #213746'
+       }"   
+        class="complain col-md-5">
+        
+        <p class="title-par">
+          <i>ID : {{complain.id}}</i>
+          <span 
+          data-toggle="modal" [attr.data-target]=" '#' + complain.id "                            
+          class="delete-icon">x</span>
+          <span 
+          (click)="onEdit(complain.id, complain.content); checkEdit() ;editCH = complain.content "
+          class="glyphicon glyphicon-edit edit-icon"></span>
+        </p>
+        <p> {{complain.content}}</p>
+        <span class="update-at">{{complain.updated_at}}</span>
+
+
+          <!-- Modal for delete-->
+       <div class="modal fade" [attr.id]="complain.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center">Delete Complaint!</h4>
+              </div>
+              <div class="modal-body">
+               Content: <strong>{{complain.content}}</strong> <br>ID: <strong>{{complain.id}}</strong> ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button 
+                 (click)="onDelete(complain.id)"
+                  data-dismiss="modal"
+                  type="button" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

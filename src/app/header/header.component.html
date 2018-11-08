@@ -1,14 +1,30 @@
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" routerLink="home">Brand</a>
+          <a class="navbar-brand" routerLink="/home"><img src="./../../assets/logo.png" alt=""style="padding: 0;
+            margin-top: -44px;
+            height: 119px;
+            margin-left: -6px;
+            margin-right: -37px;"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <div  *ngIf="login">
-             
+                <button 
+                id="menu-btn"
+                *ngIf="login"
+                class="btn btn-default"
+                (click)="hideMenue = !hideMenue"
+                [ngStyle]="{
+                  'background-color': hideMenue ? '#0000ff12' : '#FFF',
+                  'color':  hideMenue? '#345983': '#273649' 
+                }"
+                >
+                  <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
                 <!-- admin view-->
-                <ul class="nav navbar-nav"
+                <!-- <ul class="nav navbar-nav"
                 *ngIf="type == 'admin'"
                 >
                   <li routerLinkActive="active">
@@ -29,9 +45,9 @@
                   <li routerLinkActive="active">
                     <a routerLink="/admin/bikes">bikes</a>
                   </li>
-                </ul>
+                </ul> -->
                 <!--  user view  -->
-                <ul class="nav navbar-nav"
+                <!-- <ul class="nav navbar-nav"
                 *ngIf="type == 'user'"
                 >
                   <li routerLinkActive="active">
@@ -40,9 +56,9 @@
                   <li routerLinkActive="active">
                     <a routerLink="user"> User not work yet</a>
                   </li>
-                </ul>
+                </ul> -->
                 <!-- maintainece view -->
-                <ul class="nav navbar-nav"
+                <!-- <ul class="nav navbar-nav"
                 *ngIf="type == 'maintainance'"
                 >
                   <li routerLinkActive="active">
@@ -51,7 +67,7 @@
                   <li routerLinkActive="active">
                     <a routerLink="maintenace">maintainece not work yet</a>
                   </li>
-                </ul>
+                </ul> -->
                 
           </div>
   
@@ -66,4 +82,244 @@
       </div>
     </div><!-- /.container-fluid -->
 </nav>
-  
+
+<!-- admin nav -->
+<div  *ngIf="login && type == 'admin' && hideMenue" class="menu-left">
+    <ul>
+        <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="home">
+                <img src="./../../assets/home-icon.png" alt="" style="margin-right:15px;">Home</a>
+          </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a [routerLink]="['/admin', 'complaints']">
+              <img src="./../../assets/complaints-icon.png" alt=""
+              style="width: 55px;
+              margin-right: 4px;
+              margin-left: -4px;">Complains</a>
+              <ul>
+                  <li class="list">
+                    <a [routerLink]="['/admin', 'complaints']">Create Complaint</a>
+                  </li>
+                  <li class="list">
+                    <a [routerLink]="['/admin', 'user-complaint']">User Complaints</a>
+                  </li>
+                </ul>
+            </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="/admin/users">
+              <img src="./../../assets/users-icon.png" alt="" style="margin-right: 15px;">Users</a>
+          </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="/admin/places">
+              <img src="./../../assets/place-icon.png" alt="" style="width: 30px; margin-right: 15px;">Places</a>
+          </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="/admin/maintenances">
+              <img src="./../../assets/maintenance.png" alt="" style="margin-right: 17px;">Supervisors</a>
+              <ul>
+                  <li class="list"><a routerLink="/admin/maintenances/new">Add Supervisor</a></li>
+                </ul>
+          </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="/admin/bikes">
+              <img src="./../../assets/bike-icon.png" alt=""
+              style="width: 37px;
+              margin-right: 12px;
+              margin-left: 9px;">Bikes</a>
+              <ul>
+                  <li class="list"><a routerLink="/admin/bikes/new">Add bike</a></li>
+                </ul>
+          </li>
+          <li routerLinkActive="active-link" style="margin-bottom: 23px">
+            <a routerLink="/admin/feedback">
+              <img src="./../../assets/feedback-icon.png" alt=""
+              style="width: 35px;
+              margin-right: 12px;
+              margin-left: 9px;">Feedback</a>
+          </li>
+    </ul>
+  </div>
+
+  <div  *ngIf="login && type == 'admin' && !hideMenue" class="menu-left">
+      <ul>
+          <li routerLinkActive="active-link">
+              <a routerLink="home">
+                  <img src="./../../assets/home-icon.png" alt="">                
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/admin', 'complaints']">
+                <img src="./../../assets/complaints-icon.png" alt="" 
+                style="width: 55px;
+                margin-right: 0;
+                margin-left: -4px;">                                                        
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a routerLink="/admin/users">
+                <img src="./../../assets/users-icon.png" alt="">                                          
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a routerLink="/admin/places">
+                <img src="./../../assets/place-icon.png" alt="" style="width: 30px;">                            
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a routerLink="/admin/maintenances">
+                <img src="./../../assets/maintenance.png" alt="">              
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a routerLink="/admin/bikes">
+                <img src="./../../assets/bike-icon.png" alt=""
+                style="width: 41px;
+                margin-right: -11px;
+                margin-left: 6px;">
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a routerLink="/admin/feedback">
+                <img src="./../../assets/feedback-icon.png" alt=""
+                style="width: 35px;
+                margin-right: -11px;
+                margin-left: 6px;">
+              </a>
+            </li>
+      </ul>
+    </div>
+
+<!-- user nav -->
+<div  *ngIf="login && type == 'user' && hideMenue" class="menu-left" style="background: #345983">
+    <div>
+       
+       <img class="img-profile" [src]="img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/' + userImg : './../../../assets/man.png'">
+       
+        <div >
+            <h4 class="center">{{userName}} </h4>
+            <p style="font-size: 12px;
+            margin-left: 26px;
+            margin-right: 26px;
+            margin-bottom: 46px;
+            ">
+              <strong>Email :</strong> {{userEmail}} <br>
+              <strong>Balance :</strong> {{userBalance}} <br>
+            </p>
+          </div>
+    </div>
+    <ul>
+        <li routerLinkActive="active-link2" style="margin-bottom: 23px">
+            <a routerLink="home">
+                <img src="./../../assets/home-icon.png" alt="" style="margin-right:15px;">Home</a>
+          </li>
+          <li routerLinkActive="active-link2">
+              <a routerLink="user/history">
+                <img src="./../../assets/history.png" alt="" style="margin-right:15px;">History 
+              </a>
+          </li>
+         
+          <li routerLinkActive="active-link2" style="margin-bottom: 23px">
+            <a routerLink="/user/feedback">
+              <img src="./../../assets/feedback-icon.png" alt=""
+              style="width: 35px;
+              margin-right: 12px;
+              margin-left: 9px;">Feedback</a>
+          </li>
+         
+    </ul>
+  </div>
+
+  <div  *ngIf="login && type == 'user' && !hideMenue" class="menu-left" style="background: #345983">
+      <ul>
+          <li routerLinkActive="active-link2">
+              <a routerLink="home">
+                  <img src="./../../assets/home-icon.png" alt="">                
+              </a>
+          </li>
+          <li routerLinkActive="active-link2">
+              <a routerLink="user/history">
+                <img src="./../../assets/history.png" alt="">    
+              </a>
+          </li>
+          <li routerLinkActive="active-link2">
+            <a routerLink="/user/feedback">
+              <img src="./../../assets/feedback-icon.png" alt=""
+              style="width: 35px;
+              margin-right: -11px;
+              margin-left: 6px;">
+            </a>
+          </li>
+
+         
+           
+      </ul>
+    </div>
+
+
+<!-- maintainance nav -->
+<div  *ngIf="login && type == 'maintainance' && hideMenue" class="menu-left" style="background: #213746">
+    <div>
+       
+
+       <img 
+        class="img-profile"
+        style="margin-left: 34px;"
+        [src]="img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/' + userImg : './../../../assets/serviceman.png'">
+       
+        <div >
+            <h4 class="center">{{userName}} </h4>
+            <p style="font-size: 12px;
+            margin-left: 26px;
+            margin-right: 26px;
+            margin-bottom: 46px;
+            ">
+              <strong>Email :</strong> {{userEmail}} <br>
+            </p>
+          </div>
+    </div>
+    <ul>
+        <li routerLinkActive="active-link3" style="margin-bottom: 23px">
+            <a routerLink="home">
+                <img src="./../../assets/home-icon.png" alt="" style="margin-right:15px;">Home</a>
+       </li>
+       <li routerLinkActive="active-link3" style="margin-bottom: 23px">
+        <a routerLink="/maintenace/map">
+          <img src="./../../assets/place-icon.png" alt="" style="width: 30px; margin-right: 15px;">Places</a>
+      </li>
+      <li routerLinkActive="active-link3" style="margin-bottom: 23px">
+        <a routerLink="/maintenace/feedback">
+          <img src="./../../assets/feedback-icon.png" alt=""
+          style="width: 35px;
+          margin-right: 12px;
+          margin-left: 9px;">Add Feedback</a>
+      </li>
+         
+    </ul>
+  </div>
+
+  <div  *ngIf="login && type == 'maintainance' && !hideMenue" class="menu-left" style="background: #213746">
+      <ul>
+          <li routerLinkActive="active-link3">
+              <a routerLink="home">
+                  <img src="./../../assets/home-icon.png" alt="">                
+              </a>
+          </li>
+          <li routerLinkActive="active-link3">
+            <a routerLink="/maintenace/map">
+              <img src="./../../assets/place-icon.png" alt="" style="width: 30px;">                            
+            </a>
+          </li>
+          <li routerLinkActive="active-link3">
+            <a routerLink="/maintenace/feedback">
+              <img src="./../../assets/feedback-icon.png" alt=""
+              style="width: 31px;
+              margin-right: 6px;
+              margin-left: 12px;">
+            </a>
+          </li>
+      </ul>
+    </div>
+  <div 
+  *ngIf="hideMenue"
+  (click)="hideMenue = !hideMenue"
+  id="blur-all"></div>

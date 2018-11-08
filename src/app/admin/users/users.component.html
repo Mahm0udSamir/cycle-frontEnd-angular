@@ -15,10 +15,11 @@
     <table class="table table-fixed" >
         <thead>
           <tr>
-            <th class="col-xs-1"></th>
-            <th class="col-xs-1">ID</th>
+            <th class="col-xs-1"> 
+               <span style=" left: 82px;position: absolute;">ID</span>
+            </th>
             <th class="col-xs-2">Name</th>
-            <th class="col-xs-2">Email</th>
+            <th class="col-xs-3">Email</th>
             <th class="col-xs-2">Created at</th>
             <th class="col-xs-2">Updated at</th>
             <th class="col-xs-1">Balance</th>
@@ -26,39 +27,30 @@
           </tr>
         </thead>
         <tbody >
-            <!-- <tr>
-                <td class="col-xs-1"><img class="user-img" src="https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/10314501_362276733948997_7521527313236426870_n.jpg?oh=e77f84f2bbb03b8a91a1df4948a615b9&oe=5B11F5A9"
-                  alt="user.img"></td>
-                <td class="col-xs-1">{{users[0].id}}</td>
-                <td class="col-xs-2">{{users[0].name}}</td>
-                <td class="col-xs-2">{{users[0].email}}</td>
-                <td class="col-xs-2">{{users[0].created_at === null? '2018-02-10 05:53:30': users[0].created_at}}</td>
-                <td class="col-xs-2">{{users[0].updated_at === null? '2018-02-10 05:53:30': users[0].updated_at}}</td>
-                <td class="col-xs-1">{{users[0].balance}}</td>
-                <td class="col-xs-1">
-                    <button 
-                     class="btn btn-primary" title="remove">
-                        <span class="glyphicon glyphicon-remove"></span>     
-                    </button>
-                </td>
-              </tr> -->
           <tr *ngFor="let user of users | nameFilter:search" >
-            <td class="col-xs-1"><img class="user-img" src="https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/10314501_362276733948997_7521527313236426870_n.jpg?oh=e77f84f2bbb03b8a91a1df4948a615b9&oe=5B11F5A9"
-              alt="user.img"></td>
-            <td class="col-xs-1">{{user.id}}</td>
+            <td class="col-xs-1">
+              <img 
+                class="user-img" [src]="user.img? 'https://mousaelenanyfciscu.000webhostapp.com/public/images/' + user.img : './../../../assets/profile-img.png'"
+              />
+              <span class="ID">{{user.id}}</span>
+              </td>
+           
             <td class="col-xs-2">{{user.name}}</td>
-            <td class="col-xs-2">{{user.email}}</td>
+            <td class="col-xs-3">{{user.email}}</td>
             <td class="col-xs-2">{{user.created_at === null? '2018-02-10 05:53:30': user.created_at}}</td>
             <td class="col-xs-2">{{user.updated_at === null? '2018-02-10 05:53:30': user.updated_at}}</td>
             <td class="col-xs-1">{{user.balance}}</td>
             <td class="col-xs-1">
+              
+              <!-- delete user -->
+              
                 <button
-                 data-toggle="modal" [attr.data-target]="'#' + user.id"
-                 class="btn btn-primary" title="remove">
-                    <span class="glyphicon glyphicon-remove"></span>     
+                data-toggle="modal" [attr.data-target]="'#' + user.id"
+                class="btn btn-primary" >
+                   <span class="glyphicon glyphicon-remove"></span>     
                 </button>
-
-               <!-- Modal -->
+          
+               <!-- Modal for delete one-->
                 <div class="modal fade" [attr.id]="user.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -87,6 +79,3 @@
         </tbody>
     </table>
 </div>
-
-
-<router-outlet></router-outlet>

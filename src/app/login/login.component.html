@@ -1,7 +1,10 @@
 <div class="blure-form col-xs-12">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-1 col-md-offset-2 form-border">
+      <div 
+        class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-1 col-md-offset-2 form-border"
+        *ngIf="toggle"
+        >
         
         <form (ngSubmit)="onSubmit()" #f="ngForm">
          <a routerLink="/"  title="close"><span class=" close">x</span></a>
@@ -9,11 +12,14 @@
           Login</h2>
         <div 
           class="input-group"
-          [ngClass]="{'error': !email.valid && email.touched}"
+          [ngClass]="{
+            'error': !email.valid && email.touched}"
         >
           <span 
-           [ngClass]="{'errorIcon': !email.valid && email.touched}"          
-            class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+           [ngClass]="{
+             'errorIcon': !email.valid && email.touched}
+             "          
+            class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
           <input 
             id="email" 
             type="text" 
@@ -23,6 +29,7 @@
             ngModel
             email
             required
+            [(ngModel)]="loginEmail"
             #email="ngModel"
             >
           </div>
@@ -40,10 +47,13 @@
 
           <div 
             class="input-group"
-            [ngClass]="{'error': !password.valid && password.touched}"
+            [ngClass]="{
+              'error': !password.valid && password.touched}
+            "
           >
           <span 
-            [ngClass]="{'errorIcon': !password.valid && password.touched}"
+            [ngClass]="{
+              'errorIcon': !password.valid && password.touched}"
             class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
           <input 
             id="password" 
@@ -53,20 +63,136 @@
             placeholder="Password"
             ngModel
             required
+              minlength="6"
             #password="ngModel"
             >
           </div>
-          <!-- <ul
-            class="help-block"
-            *ngIf="!password.valid && password.touched"
-          >
-            <li >Password is require</li>
-          </ul> -->
-        <button 
+          <button 
+          type="submit"
           class="btn form-control" 
           type="submit"
           [disabled]="!f.valid"
           >Submit</button>
+          <ul
+          class="help-block"
+          *ngIf="message"
+          >
+          <li>
+            {{message}}
+            <button 
+              class="btn-danger"  
+            *ngIf="verified" 
+            (click)="onVerify()"
+            >Send verification</button>
+          </li>
+          
+        </ul>
+        <div class="change">
+          Create New Account <button class="btn-primary" (click)="toggle = !toggle; message = null" >Register</button>
+        </div>
+      </form>
+    </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- register -->
+      <div 
+        class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-1 col-md-offset-2 form-border"
+        *ngIf="!toggle"
+        >
+        
+        <form (ngSubmit)="onRegister()" #R="ngForm">
+         <a routerLink="/"  title="close"><span class=" close">x</span></a>
+        <h2>Register</h2>
+        <div 
+          class="input-group"
+          [ngClass]="{
+            'error': !Rname.valid && Rname.touched}"
+        >
+          <span 
+           [ngClass]="{
+             'errorIcon': !Rname.valid && Rname.touched}
+             "          
+            class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input 
+            id="name" 
+            type="text" 
+            class="form-control" 
+            name="name" 
+            placeholder="Name"
+            ngModel
+            required
+            #Rname="ngModel"
+            >
+          </div>
+        <div 
+          class="input-group"
+          [ngClass]="{
+            'error': !Remail.valid && Remail.touched}"
+        >
+          <span 
+           [ngClass]="{
+             'errorIcon': !Remail.valid && Remail.touched}
+             "          
+            class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <input 
+            id="email" 
+            type="email" 
+            class="form-control" 
+            name="email" 
+            placeholder="Email"
+            ngModel
+            email
+            required
+            #Remail="ngModel"
+            >
+          </div>
+          <!-- <ul 
+            class="help-block"
+            *ngIf="!email.valid && email.touched"
+            >
+              <li
+                *ngIf="email.value ===''; else notValid"
+              > Require</li> 
+              <li  
+                #notValid
+              >Email not valid!</li>
+          </ul> -->
+
+          <div 
+            class="input-group"
+            [ngClass]="{
+              'error': !Rpassword.valid && Rpassword.touched}
+            "
+          >
+          <span 
+            [ngClass]="{
+              'errorIcon': !Rpassword.valid && Rpassword.touched}"
+            class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input 
+            id="password" 
+            type="password" 
+            class="form-control" 
+            name="password" 
+            placeholder="Password"
+            ngModel
+            required
+              minlength="6"
+            #Rpassword="ngModel"
+            >
+          </div>
+          <button 
+          class="btn form-control" 
+          type="submit"
+          [disabled]="!R.valid"
+          >Submit</button>
+          <ul
+          class="help-block"
+          *ngIf="message"
+          >
+            <li>{{message}}</li>
+        </ul>
+          <div class="change">
+            Have An Account <button class=" btn-primary" (click)="toggle = !toggle" >Login</button>
+          </div>
       </form>
     </div>
   </div>

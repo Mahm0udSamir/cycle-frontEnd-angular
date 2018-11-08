@@ -1,0 +1,27 @@
+
+<div 
+  class="col-md-4 col-md-offset-4 contain" 
+  *ngIf="histories.length !== 0; else elseTemplate"
+>
+<div 
+class="item"
+*ngFor="let history of histories; let i=index"
+    [ngClass]="{'col-md-8': !mouseOvered[i],
+    'col-md-offset-2': !mouseOvered[i],
+    'col-md-10': mouseOvered[i],
+    'col-md-offset-1': mouseOvered[i]}"
+    (mouseout)="mouseOvered[i]=false" 
+    (mouseover)="mouseOvered[i]=true">
+    <span class="delete" (click)="onDeleteHistory(history.id)">x</span>
+    <strong>Bike ID </strong> {{history.bike_id}} <br>
+    <strong>Price </strong> {{history.price}} <br>
+    <span class="date">{{history.date}}</span> 
+  </div>
+</div>
+
+<ng-template #elseTemplate>
+  
+  <h3 class="col-md-6 col-md-offset-3 emptyH">
+    Empty History.
+  </h3>
+</ng-template>

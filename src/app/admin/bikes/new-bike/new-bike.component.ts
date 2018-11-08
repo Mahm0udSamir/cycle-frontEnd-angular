@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-bike.component.css']
 })
 export class NewBikeComponent implements OnInit {
-  name;
   errorMessage = null;
   bikesName = new Array();
+  @ViewChild('name') name;
   constructor(private bikeService: BikeService, private router: Router) { }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class NewBikeComponent implements OnInit {
   }
 
   onKey() {
-    if (this.bikesName.filter((bike) => bike === this.name.trim())[0]) { // bike name from bikesName[]
+    if (this.bikesName.filter((bike) => bike === this.name.value.trim())[0]) { // bike name from bikesName[]
         this.errorMessage = 'The name has already been taken.';
       } else {
         this.errorMessage = null;
@@ -36,10 +36,10 @@ export class NewBikeComponent implements OnInit {
 
   onSubmit() {
     const bike = {
-      name: this.name.trim(),
+      name: this.name.value.trim(),
       lat: 33.0,
       lng: 34.00,
-      is_locked: 0
+      status: 'unlocked'
     };
 
 
@@ -50,7 +50,12 @@ export class NewBikeComponent implements OnInit {
           this.router.navigate(['/reload/admin/bikes']);
           return;
         } else {
-          this.errorMessage = data.name[0];
+          if (data.name){
+            this.errorMessage = data.name[0];
+          }
+          if (data.status){
+            this.errorMessage = data.status[0];
+          }
         }
       },
       error => {

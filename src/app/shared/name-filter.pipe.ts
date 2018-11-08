@@ -5,13 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NameFilterPipe implements PipeTransform {
 
-  transform(items: any[], filter): any {
-    console.log(filter);
+  transform(items: any[], filterItem: string): any {
 
-    if (!items || !filter) {
+   if (!items || !filterItem) {
       return items;
    }
-   return items.filter(item => filter === item.name);
+
+    return items.filter(el => {
+        return el.name.toLowerCase().indexOf(filterItem.toLowerCase()) > -1;
+    });
   }
 
 }

@@ -7,17 +7,24 @@
 </agm-marker>
 </agm-map>
  -->
- <agm-map style="height: 300px" [latitude]="lat" [longitude]="lng">
-  <agm-marker 
-    *ngFor="let mark of locations"
-    [latitude]="mark.lat" [longitude]="mark.lng">
-    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
-      <ng-template class="info">
-        My first Snazzy Info Window!
-      </ng-template>
-    </agm-snazzy-info-window>
-  </agm-marker>
-</agm-map>
+ <div class="col-md-10 col-md-offset-1 map-body">
+   <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker 
+      *ngFor="let mark of locations"
+      [latitude]="mark.lat" [longitude]="mark.lng">
+      <agm-snazzy-info-window [maxWidth]="400" [closeWhenOthersOpen]="true">
+        <ng-template class="info">
+          <div style="width:180px; text-align:left">
+
+            Bike Name: {{mark.name}} <br>
+            Status: {{mark.status}} <br>
+            <span *ngIf="mark.status === 'unlocked'">User ID: {{mark.user_id}}</span>
+          </div>
+        </ng-template>
+      </agm-snazzy-info-window>
+    </agm-marker>
+  </agm-map>
+ </div>
 
 <!-- <agm-map style="height: 300px" [latitude]="51.673858" [longitude]="7.815982">
   <agm-snazzy-info-window [isOpen]="true" [latitude]="51.673858" [longitude]="7.815982" [closeWhenOthersOpen]="true">

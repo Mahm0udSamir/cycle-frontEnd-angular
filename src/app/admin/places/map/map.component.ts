@@ -1,32 +1,127 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
-
+import { NgModule, Component, OnInit, OnDestroy } from '@angular/core';
+import { BikeService } from '../../../shared/bike.service';
+import { UserService } from '../../../shared/user.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: 'map.component.html',
   styleUrls: ['map.component.css'],
 })
-export class MapComponent {
-  lat = -31.563910;
-  lng = 147.154312;
-  locations = [
-    {lat: -31.563910, lng: 147.154312},
-    {lat: -33.718234, lng: 150.363181},
-    {lat: -33.727111, lng: 150.371124},
-    {lat: -33.848588, lng: 151.209834},
-    {lat: -33.851702, lng: 151.216968},
-    {lat: -34.671264, lng: 150.863657},
-    {lat: -35.304724, lng: 148.662905},
-    {lat: -36.817685, lng: 175.699196},
-    {lat: -36.828611, lng: 175.790222},
-    {lat: -37.750000, lng: 145.116667},
-    {lat: -37.759859, lng: 145.128708},
-    {lat: -37.765015, lng: 145.133858},
-    {lat: -37.770104, lng: 145.143299},
-    {lat: -37.773700, lng: 145.145187},
-    {lat: -37.774785, lng: 145.137978},
-    {lat: -37.819616, lng: 144.968119},
-    {lat: -38.330766, lng: 144.695692},
-    {lat: -39.927193, lng: 175.053218}];
+export class MapComponent implements OnInit, OnDestroy {
+  time;
+  lat = 34.000000;
+  lng = 40.000000;
+  locations = [];
+  bikeData = [];
+  constructor(
+    private bickeService: BikeService,
+    private userService: UserService
+  ) { }
+
+  ngOnInit() {
+    this.bickeService.getAllbikes().subscribe(
+      bickesData => {
+        this.bikeData = bickesData;
+        console.log('data ', this.bikeData);
+        // this.locations = data;
+        bickesData.forEach(bicke => {
+          // let user: {
+          //   id: number,
+          //   email: string,
+          //   img: string,
+          //   name: string,
+          //   balance: string,
+          // };
+
+          this.locations.push({
+            user_id: Number(bicke.user_id),
+            lat: Number(bicke.lat),
+            lng: Number(bicke.lng),
+            name: bicke.name,
+            status: bicke.status
+            // user: {}
+          });
+
+          // if (bicke.status === 'locked' || bicke.status === 'unlocked' ) {
+          //   this.userService.getUserById(bicke.user_id).subscribe(
+          //     userData => {
+          //       // for (let i = 0; i < this.locations.length; i++) {
+          //         if (bicke.user_id === userData.id) {
+          //           user = userData;
+          //           console.log('user ii ', user);
+          //         }
+          //       // }
+          //       console.log('locations ii ', this.locations);
+          //     },
+          //     error => {
+          //       console.log(error);
+          //     }
+          //  );
+          // }
+
+        });
+        console.log('locations ', this.locations);
+      }
+    );
+
+    // this.bikeData.forEach(bicke => {
+    //  let user: {
+    //     id: number,
+    //     email: string,
+    //     img: string,
+    //     name: string,
+    //     balance: string,
+    //   };
+    //   if (bicke.status === 'locked' || bicke.status === 'unlocked' ) {
+    //     this.userService.getUserById(bicke.user_id).subscribe(
+    //       userData => {
+    //         user = {
+    //           id: userData.id,
+    //           email: userData.email,
+    //           img: userData.img,
+    //           name: userData.name,
+    //           balance: userData.balance
+    //         };
+    //         for (let i = 0; i < this.locations.length; i++) {
+    //           if(this.locations[i].user_id === userData.id) {
+    //             this.locations[i].user = user;
+    //           }
+    //         }
+    //         console.log('user ii ', user);
+    //         console.log('locations ii ', this.locations);
+    //       },
+    //       error => {
+    //         console.log(error);
+    //       }
+    //     );
+    //   }
+    // });
+
+    this.time = setInterval(() => {
+      this.bickeService.getAllbikes().subscribe(
+        data => {
+          if (JSON.stringify(this.bikeData) !== JSON.stringify(data)) {
+            this.locations = [];
+            this.bikeData = data;
+            console.log('data ', data);
+            console.log('locations ', this.locations);
+            // this.locations = data;
+            data.forEach(bicke => {
+              this.locations.push({
+                lat: Number(bicke.lat),
+                lng: Number(bicke.lng),
+                name: bicke.name,
+                status: bicke.status
+              });
+            });
+          }
+        });
+    }, 1000);
+
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.time);
+  }
 }

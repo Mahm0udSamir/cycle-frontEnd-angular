@@ -1,0 +1,35 @@
+@import url('./../admin/complaints/complaints.component.css');
+
+.bg-body{
+    background: linear-gradient(to bottom right, #474e5e, #fff0);
+}
+
+.profile{
+    margin-top: 93px;
+    background: #283e4a6b;
+    padding: 34px 33px;
+    box-shadow: 1px 1px 20px 2px #000000;
+    color: #FFF;
+    padding-right: 0;    
+}
+
+.profile div.col-md-7{
+    background: #283e4ad4;
+    height: 360px;
+    padding: 0 28px;
+    /* border-radius: 12px; */
+    /* -webkit-box-shadow: 0 0 20px 0px #fff; */
+    /* box-shadow: 0 0 20px 0px #fff; */
+    /* border: 1px solid #ffffff4a; */
+    margin-top: -35px;
+    margin-bottom: -52px;
+    margin-left: 0;
+}
+
+.profile div.col-md-5 img{
+    width: 290px;
+    box-shadow: 0 0 20px 0px #000;
+    border: 1px solid #ffffff78;
+    border-radius: 12px;
+    margin-left: -2px;    
+}

@@ -1,0 +1,14 @@
+.bg-body{
+    width: 100%;
+    height: 680px;
+    position: fixed;
+    z-index: -1;
+    background: #ffffffd4;    
+}
+img{
+    position: fixed;
+    width: 100%;
+    margin-top: -70px;
+    z-index: -2;
+    left: 0;
+}
